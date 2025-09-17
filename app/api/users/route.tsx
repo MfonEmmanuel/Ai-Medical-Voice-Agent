@@ -21,16 +21,16 @@ export async function POST(req: NextRequest) {
       const result = await db
         .insert(usersTable)
         .values({
-          name: user?.firstName || "No name",
+          name: user?.fullName || "No name",
           email: user?.primaryEmailAddress?.emailAddress || "No email",
           credit: 10,
           // @ts-ignore
         })
         .returning();
-      return NextResponse.json(result);
+      return NextResponse.json(result[0]);
     }
     return NextResponse.json(users[0]);
-  } catch (error) {
-    return NextResponse.json(error);
+  } catch (e) {
+    return NextResponse.json(e);
   }
 }
