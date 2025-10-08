@@ -28,12 +28,14 @@ const menuOptions = [
 
 function AppHeader() {
   return (
-    <div className="w-full flex items-center p-4 shadow justify-between px-10 py-5 ">
-      <Image src="/logo.svg" alt="Logo" width={80} height={40} />
-      <div className="flex items-center gap-10">
+    <div className="w-full flex items-center p-4 shadow justify-between px-10 md:px-20 lg:px-40 py-5 ">
+      <Image src="/logo.svg" alt="Logo" width={60} height={40} />
+      <div className="hidden md:flex items-center gap-7">
         {menuOptions.map((options, index) => (
           <div key={index}>
-            <h2>{options.name}</h2>
+            <h2 className="hover:font-bold cursor-pointer transition-all">
+              {options.name}
+            </h2>
           </div>
         ))}
       </div>
